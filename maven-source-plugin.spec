@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.2.1
-Release:        7.10%{?dist}
+Release:        7.11%{?dist}
 Summary:        Plugin creating source jar
 
 License:        ASL 2.0
@@ -14,16 +14,16 @@ Source0:        http://repo1.maven.org/maven2/org/apache/maven/plugins/%{pkg_nam
 BuildArch: noarch
 
 BuildRequires: %{?scl_prefix_java_common}maven-local
-BuildRequires: maven30-plexus-utils
+BuildRequires: %{?scl_prefix}plexus-utils
 BuildRequires: %{?scl_prefix_java_common}ant
-BuildRequires: maven30-maven-compiler-plugin
-BuildRequires: maven30-maven-plugin-plugin
-BuildRequires: maven30-maven-resources-plugin
-BuildRequires: maven30-maven-surefire-plugin
-BuildRequires: maven30-maven-surefire-provider-junit
-BuildRequires: maven30-maven-jar-plugin
-BuildRequires: maven30-maven-javadoc-plugin
-BuildRequires: maven30-mvn(org.apache.maven.surefire:surefire-junit4)
+BuildRequires: %{?scl_prefix}maven-compiler-plugin
+BuildRequires: %{?scl_prefix}maven-plugin-plugin
+BuildRequires: %{?scl_prefix}maven-resources-plugin
+BuildRequires: %{?scl_prefix}maven-surefire-plugin
+BuildRequires: %{?scl_prefix}maven-surefire-provider-junit
+BuildRequires: %{?scl_prefix}maven-jar-plugin
+BuildRequires: %{?scl_prefix}maven-javadoc-plugin
+BuildRequires: %{?scl_prefix}mvn(org.apache.maven.surefire:surefire-junit4)
 
 
 %description
@@ -39,20 +39,20 @@ API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 sed -i -e "s|plexus-container-default|plexus-container|g" pom.xml
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_file  : %{pkg_name}
 %mvn_build -f
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -65,6 +65,9 @@ set -e -x
 %doc LICENSE NOTICE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.2.1-7.11
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 2.2.1-7.10
 - maven33 rebuild
 
