@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.2.1
-Release:        7.11%{?dist}
+Release:        7.12%{?dist}
 Summary:        Plugin creating source jar
 
 License:        ASL 2.0
@@ -13,7 +13,7 @@ Source0:        http://repo1.maven.org/maven2/org/apache/maven/plugins/%{pkg_nam
 
 BuildArch: noarch
 
-BuildRequires: %{?scl_prefix_java_common}maven-local
+BuildRequires: %{?scl_prefix}maven-local
 BuildRequires: %{?scl_prefix}plexus-utils
 BuildRequires: %{?scl_prefix_java_common}ant
 BuildRequires: %{?scl_prefix}maven-compiler-plugin
@@ -65,6 +65,9 @@ set -e -x
 %doc LICENSE NOTICE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 2.2.1-7.12
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.2.1-7.11
 - maven33 rebuild #2
 
