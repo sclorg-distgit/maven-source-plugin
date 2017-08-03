@@ -3,7 +3,7 @@
 
 Name:           %{?scl_prefix}maven-source-plugin
 Version:        3.0.1
-Release:        2.1%{?dist}
+Release:        2.2%{?dist}
 Summary:        Plugin creating source JAR
 License:        ASL 2.0
 URL:            http://maven.apache.org/plugins/maven-source-plugin/
@@ -52,6 +52,9 @@ API documentation for %{pkg_name}.
 %license LICENSE NOTICE
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 3.0.1-2.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 3.0.1-2.1
 - Automated package import and SCL-ization
 
